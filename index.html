@@ -12,7 +12,7 @@
             position: absolute;
             top: 20px;
             left: 160px;
-            width: 100px;
+            width: 512px;
             background-color: white;
             padding: 5px;
             border-radius: 8px;
@@ -60,6 +60,9 @@
             }
         }
     </style>
+        <div class="container">
+            <button class="hide-button" onclick="toggleQR()">Toggle QR</button>
+            <img id="qrImage" src="qr_code.png" alt="QR Code" class="qr-overlay">
         
         <script type="text/javascript">
             window.PlotlyConfig = {MathJaxConfig: 'local'};
