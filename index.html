@@ -4,23 +4,44 @@
     <meta charset="utf-8" />
     <title>Calidad del agua</title>
     <style>
+        .container {
+            position: relative;
+            height: 100vh; /* Full viewport height */
+        }
         .qr-overlay {
             position: absolute;
-            top: 300px;
+            top: 170px;
             left: 20px;
-            width: 450px; /* Adjust size as needed */
+            width: 512px; /* Adjust size as needed */
             background-color: white;
             padding: 5px;
             border-radius: 6px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 10; /* Ensures it overlays the map */
+            opacity: 0.2; /* Semi-transparent by default */
+            transition: opacity 0.3s ease; /* Smooth transition */
         }
+        .qr-overlay:hover {
+        opacity: 1; /* Fully opaque on hover */
+        }
+        .hide-button {
+        position: absolute;
+        top: 120px;
+        left: 20px;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 20; /* Ensures the button is on top */
+    }
     </style>
 </head>
 <body>
-    <div style="position: relative;">
-    <!-- QR Code Image Overlay -->
-    <img src="qr_code.png" alt="QR Code" class="qr-overlay">
+    <div class="container">
+        <button class="hide-button" onclick="toggleQR()">Mostrar QR</button>
+        <img id="qrImage" src="qr_code.png" alt="QR Code" class="qr-overlay">
         
         <script type="text/javascript">
             window.PlotlyConfig = {MathJaxConfig: 'local'};
@@ -37,6 +58,15 @@
                         }).then(function(){
                             Plotly.animate('c9d2d6a9-e510-40a7-a974-5e7e68cff3e1', null);
                         })                };
+        
+            function toggleQR() {
+                var qrImage = document.getElementById("qrImage");
+                if (qrImage.style.display === "none") {
+                    qrImage.style.display = "block";
+                } else {
+                    qrImage.style.display = "none";
+                }
+            }
         </script>        
     </div>
 </body>
